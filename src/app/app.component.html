@@ -1,0 +1,57 @@
+<div class="container">
+  <h1>Directive example</h1>
+  <div class="builder-source">
+    <h4>Source</h4>
+
+    <section
+      ngxDroppable
+      class="drop-container"
+      [model]="sourceBuilderTools"
+      [copy]="true">
+
+      <div *ngFor="let item of sourceBuilderTools"
+           ngxDraggable
+           [model]="item"
+           [moves]="true"
+           dropZones="builder-target2"
+      >
+        {{ item.name }}
+      </div>
+    </section>
+
+  </div>
+
+  <div class="builder-target2">
+    <h4>Target</h4>
+
+    <section
+      ngxDroppable="builder-target2"
+      class="drop-container"
+      [model]="targetBuilderTools"
+      [removeOnSpill]="true"
+      (remove)="log($event)">
+      <div *ngFor="let item of targetBuilderTools"
+           ngxDraggable
+           [model]="item"
+           [id]="item.name +'-'+ item.id"
+           dropZones="builder-target2">
+        <div *ngIf="item">
+          {{ item.name }}
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <pre>
+  Source:
+  {{sourceBuilderTools | json}}#
+
+  Target:
+  {{targetBuilderTools | json}}#
+</pre>
+</div>
+
+
+
+<app-builder></app-builder>

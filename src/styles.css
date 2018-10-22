@@ -1,0 +1,8 @@
+@import '~@swimlane/ngx-dnd/release/index.scss';
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.scrollAuto100{
+  height: 500px;
+  width: 100%;
+  overflow-y: auto;
+}
